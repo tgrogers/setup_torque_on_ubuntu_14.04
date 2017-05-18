@@ -12,7 +12,7 @@ sudo cp debian.pbs_mom /etc/init.d/pbs_mom
 sudo cp debian.pbs_sched /etc/init.d/pbs_sched
 
 # torque configuration
-hostname | sudo tee /var/spool/torque/server_name
+echo "localhost" | sudo tee /var/spool/torque/server_name
 echo y | sudo /opt/local/sbin/pbs_server -t create
 sudo /etc/init.d/trqauthd start
 
@@ -28,7 +28,7 @@ sudo /opt/local/bin/qterm
 
 echo "pbs_server = 127.0.0.1" | sudo tee /var/spool/torque/mom_priv/config
 echo "localhost np=2" | sudo tee /var/spool/torque/server_priv/nodes
-echo "`hostname` np=2" | sudo tee -a /var/spool/torque/server_priv/nodes
+#echo "`hostname` np=2" | sudo tee -a /var/spool/torque/server_priv/nodes
 
 
 # start server
